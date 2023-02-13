@@ -22,6 +22,7 @@ document.querySelector("#register").addEventListener("click", ()=>{
             .then((res)=>res.json())
             .then((json)=>{
                 if(json.success == "OK"){
+                    document.querySelector("#id").value= "";
                     document.querySelector("#name").value= "";
                     document.querySelector("#surname").value= "";
                     document.querySelector("#password").value= "";

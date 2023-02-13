@@ -9,6 +9,7 @@ fetch(`${BASE_URL}/get-data`)
         .then((json)=>{
             json.data.map(
                 item=>{
+                    document.querySelector("#id").value= item.id;
                     document.querySelector("#name").value= item.name;
                     document.querySelector("#surname").value= item.surname;
                     document.querySelector("#password").value= item.password;
@@ -40,10 +41,12 @@ fetch(`${BASE_URL}/get-data`)
             .then((res)=>res.json())
             .then((json)=>{
                 if(json.success == "OK"){
+                    document.querySelector("#id").value= "";
                     document.querySelector("#name").value= "";
                     document.querySelector("#surname").value= "";
                     document.querySelector("#password").value= "";
-                    swal("Qeydiyyat ugurla tamamlandi", `${json.message}`, "success").then((willDelete) => {
+                    swal("Qeydiyyat ugurla tamamlandi", `${json.message}`, "success")
+                    .then((willDelete) => {
                         if (willDelete) {
                           swal("Poof! Your imaginary file has been deleted!", {
                             icon: "success",
@@ -57,6 +60,7 @@ fetch(`${BASE_URL}/get-data`)
                 swal("Qeydiyyat tamamlanmadi", {
                     icon: "error",
                   });
+                document.querySelector("#id").value= "";
                 document.querySelector("#name").value= "";
                 document.querySelector("#surname").value= "";
                 document.querySelector("#password").value= "";
